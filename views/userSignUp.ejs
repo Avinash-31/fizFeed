@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    
+</head>
+
+<body>
+    <!-- font -->
+
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="/css/signUp.css">
+    </head>
+
+    <!-- start here -->
+
+    <body id="body">
+
+        <form class="form" action="/users/create" method="POST">
+
+            <h2>Sign up</h2>
+
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <input type="password" name="password" placeholder="Your password" required>
+            <input type="password" name="confirmPassword" placeholder="Confirm password" required>
+            
+                <input class="signBtn" type="submit" value="Sign Up">
+            
+            
+
+            <div class="socials"> 
+                <img src="https://i.pinimg.com/originals/b3/da/ac/b3daac6815ebf1516a545db6c3e40a36.jpg" alt="">
+                <img src="https://icones.pro/wp-content/uploads/2021/02/facebook-icone-orange.png" alt="">
+                <img src="https://i.pinimg.com/originals/ac/cf/1d/accf1d80314304e11e2bcf9537e13304.jpg" alt="">
+
+            </div>
+        </form>
+
+        <div class="circle"></div>
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+    </body>
+
+</html>
