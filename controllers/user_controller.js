@@ -1,11 +1,17 @@
 const User = require('../models/user');
 
 module.exports.profile = function (req, res) {
-    res.end("<h1>Profile</h1>");
+    return res.render('userProfile',{
+        title:' fizzFeed | Profile ',
+    });
 }
 
 // to render the sign in page
 module.exports.signIn = function (req, res) {
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('userSignIn', {
         title: "fizzFeed | SignIn ",
     });
@@ -13,6 +19,10 @@ module.exports.signIn = function (req, res) {
 
 // to render the sign up page
 module.exports.signUp = function (req, res) {
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('userSignUp', {
         title: "fizzFeed | SignUp ",
     });
@@ -23,22 +33,6 @@ module.exports.create = function (req, res) {
     if (req.body.password != req.body.confirmPassword) {
         return res.redirect('back');
     }
-
-    // User.findOne({ email: req.body.email })
-    //     .then(user => {
-    //         if (user) {
-    //             return res.redirect('back');
-    //         }
-
-    //         return User.create(req.body);
-    //     })
-    //     .then(user => {
-    //         res.redirect('/users/signIn');
-    //     })
-    //     .catch(err => {
-    //         console.log("error in creating user in signup", err);
-    //         return res.redirect('back');
-    //     });
 
     User.findOne({ email: req.body.email })
         .then((user) => {
@@ -60,5 +54,14 @@ module.exports.create = function (req, res) {
 
 
 module.exports.createSession = function (req, res) {
+    return res.redirect('/users/profile');
+}
 
+module.exports.destroySession = function(req,res){
+    req.logout(function(err){
+        if(err){
+            return next(err);
+        }
+        res.redirect('/');
+    });
 }
